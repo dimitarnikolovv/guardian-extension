@@ -16,7 +16,7 @@ const textarea = document.querySelector("textarea");
     let searchedWords = [];
 
     await chrome.storage.sync.get(["words", "email"], (data) => {
-      const parsed = JSON.parse(data["words"]);
+      const parsed = data["words"] ? JSON.parse(data["words"]) : [];
       email = data["email"];
 
       searchedWords.push(...parsed);

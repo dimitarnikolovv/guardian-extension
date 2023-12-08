@@ -5,8 +5,18 @@
     ['isTriggered']: true,
   });
 
-  await chrome.storage.sync.get(['email'], async (data) => {
+  await chrome.storage.sync.get(['email', 'sites'], async (data) => {
     const email = data['email'];
+
+    const sites = data['sites'] ? JSON.parse(data['sites']) : [];
+
+    sites.push({ site: url, date: new Date().toLocaleString('bg') });
+
+    if (sites.length > 0) {
+      await chrome.storage.sync.set({
+        ['sites']: JSON.stringify(sites),
+      });
+    }
 
     if (!email) return;
 
