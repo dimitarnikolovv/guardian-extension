@@ -3,8 +3,18 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Yavor Nikolov</h1>
-    <p>az shte vzema purvo mqsto</p>
+    <h1>Guardian</h1>
+
+    <form id="emailForm" method="POST">
+      <fieldset>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required />
+      </fieldset>
+      <button id="submitButton" type="submit">Save</button>
+    </form>
+
+    <script defer src="saveEmail.js" type="module"></script>
+
     <script src="index.js"></script>
   </body>
 </html>

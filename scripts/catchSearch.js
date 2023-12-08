@@ -5,6 +5,8 @@ const textarea = document.querySelector("textarea");
     const text = textarea.textContent.toLowerCase();
     console.log(text);
 
+    let email = "";
+
     const url = chrome.runtime.getURL("./db/data.json");
     const res = await fetch(url);
     const data = await res.json();
@@ -13,8 +15,10 @@ const textarea = document.querySelector("textarea");
 
     let searchedWords = [];
 
-    await chrome.storage.sync.get(["words"], (data) => {
+    await chrome.storage.sync.get(["words", "email"], (data) => {
       const parsed = JSON.parse(data["words"]);
+      email = data["email"];
+
       searchedWords.push(...parsed);
     });
 
@@ -40,8 +44,7 @@ const textarea = document.querySelector("textarea");
             message: `Засечена опасност: ${word}, при търсене: ${text}, на ${new Date().toLocaleString(
               "bg"
             )}`,
-            email: "dim_nikol@abv.bg",
-            // email: "yavor_niko@abv.bg",
+            email,
           },
         };
 
