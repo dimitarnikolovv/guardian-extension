@@ -1,8 +1,14 @@
 (async () => {
   let url = window.location.href;
 
+  await chrome.storage.sync.set({
+    ['isTriggered']: true,
+  });
+
   await chrome.storage.sync.get(['email'], async (data) => {
     const email = data['email'];
+
+    if (!email) return;
 
     const emailData = {
       service_id: 'contact_form_service',
