@@ -15,12 +15,22 @@
     {
       "js": ["scripts/catchURL.js"],
       "matches": [
-        "https://*.findahelpline.com/countries/*/topics/suicidal-thoughts/*",
-        "https://*.bros.global/referralbulgaria/*",
-        "https://blog.opencounseling.com/suicide-hotlines/*",
-        "https://*.suicideinfo.ca/resource/siecno-19920168/*",
-        "https://*.reddit.com/r/TimeToGo/*",
-        "https://*.reddit.com/r/SuicideWatch/*"
+        "https://*.findahelpline.com/*",
+        "https://findahelpline.com/*",
+
+        "https://*.bros.global/*",
+        "https://bros.global/*",
+
+        "https://blog.opencounseling.com/suicide-hotlines*",
+
+        "https://*.suicideinfo.ca/*",
+        "https://suicideinfo.ca/*",
+
+        "https://reddit.com/r/TimeToGo*",
+        "https://*.reddit.com/r/TimeToGo*",
+
+        "https://reddit.com/r/SuicideWatch*",
+        "https://*.reddit.com/r/SuicideWatch*"
       ]
     }
   ],

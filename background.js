@@ -14,8 +14,6 @@ chrome.storage.onChanged.addListener((changes) => {
 chrome.storage.sync.get(["isTriggered"], (data) => {
   const isTriggered = data["isTriggered"] ? data["isTriggered"] : false;
 
-  console.log("test", isTriggered);
-
   // Next state will always be the opposite
   const nextState = isTriggered ? "DANGER" : "SAFE";
 

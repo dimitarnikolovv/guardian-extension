@@ -1,6 +1,8 @@
 (async () => {
   let url = window.location.href;
 
+  console.log(url);
+
   await chrome.storage.sync.set({
     ['isTriggered']: true,
   });
@@ -11,6 +13,8 @@
     const sites = data['sites'] ? JSON.parse(data['sites']) : [];
 
     sites.push({ site: url, date: new Date().toLocaleString('bg') });
+
+    console.log(sites);
 
     if (sites.length > 0) {
       await chrome.storage.sync.set({

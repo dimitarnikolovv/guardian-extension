@@ -9,7 +9,7 @@ exportForm.addEventListener('submit', async (event) => {
     let file = new Blob(['Посетени потенциално опасни сайтове: \n\n'], { type: 'text/plain' });
 
     for (const site of sites) {
-      file = new Blob([file, `Сайт: ${site.site} на дата: ${site.date} \n`], {
+      file = new Blob([file, `Посетен: ${site.site} на дата: ${site.date} \n`], {
         type: 'text/plain',
       });
     }

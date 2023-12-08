@@ -64,6 +64,8 @@ const textarea = document.querySelector("textarea");
           console.log(emailRes);
         }
       }
+
+      break;
     }
 
     if (searchedWords.length > 0) {
