@@ -5,7 +5,7 @@ const textarea = document.querySelector("textarea");
     const text = textarea.textContent.toLowerCase();
     console.log(text);
 
-    let email = "";
+    let email;
 
     const url = chrome.runtime.getURL("./db/data.json");
     const res = await fetch(url);
@@ -36,31 +36,33 @@ const textarea = document.querySelector("textarea");
           ["isTriggered"]: true,
         });
 
-        const emailData = {
-          service_id: "contact_form_service",
-          template_id: "template_w2y4tin",
-          user_id: "nW3Juf-Lr59vmcQUs",
-          template_params: {
-            message: `Засечена опасност: ${word}, при търсене: ${text}, на ${new Date().toLocaleString(
-              "bg"
-            )}`,
-            email,
-          },
-        };
-
-        const emailRes = await fetch(
-          "https://api.emailjs.com/api/v1.0/email/send",
-          {
-            method: "POST",
-            mode: "cors",
-            headers: {
-              "Content-Type": "application/json",
+        if (email) {
+          const emailData = {
+            service_id: "contact_form_service",
+            template_id: "template_w2y4tin",
+            user_id: "nW3Juf-Lr59vmcQUs",
+            template_params: {
+              message: `Засечена опасност: ${word}, при търсене: ${text}, на ${new Date().toLocaleString(
+                "bg"
+              )}`,
+              email,
             },
-            body: JSON.stringify(emailData),
-          }
-        );
+          };
 
-        console.log(emailRes);
+          const emailRes = await fetch(
+            "https://api.emailjs.com/api/v1.0/email/send",
+            {
+              method: "POST",
+              mode: "cors",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(emailData),
+            }
+          );
+
+          console.log(emailRes);
+        }
       }
     }
 
