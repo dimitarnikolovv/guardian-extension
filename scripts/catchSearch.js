@@ -3,6 +3,7 @@ const textarea = document.querySelector("textarea");
 (async () => {
   if (textarea) {
     const text = textarea.textContent.toLowerCase();
+
     console.log(text);
 
     let email;
@@ -63,9 +64,8 @@ const textarea = document.querySelector("textarea");
 
           console.log(emailRes);
         }
+        break;
       }
-
-      break;
     }
 
     if (searchedWords.length > 0) {
@@ -76,6 +76,6 @@ const textarea = document.querySelector("textarea");
   }
 
   await chrome.storage.sync.get(["words"], (data) => {
-    console.log(JSON.parse(data["words"]));
+    console.log(data["words"] ? JSON.parse(data["words"]) : []);
   });
 })();
